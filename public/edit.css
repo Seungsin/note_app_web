@@ -1,0 +1,152 @@
+html, body{
+    margin : 0;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    height: 54px;
+    border-bottom: 1px solid #E9E9E9;
+}
+
+.edit__header_content{
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit__header_title{
+    margin: 0;
+    font-size: 16px;
+}
+
+.edit__header_button{
+    border:none;
+    background: none;
+    font-weight: bold;
+    font-size: 10px;
+    outline:none;
+    color:#E76E54;
+    cursor:pointer;
+}
+
+main{
+    padding:36px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit__note-section{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit__note-title-wrapper{
+    width : 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.edit__note-title-left{
+    display: flex;
+}
+
+.edit__note-title-right{
+    display: flex;
+    background:none;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    align-items: center;
+}
+
+.edit__note-delete-icon{
+    width: 12px;
+    height: 12px;
+    padding-right: 5px;
+}
+
+.edit__note-delete-text{
+    font-weight: 700;
+    font-size:10px;
+    color:#E76E54;
+}
+
+.edit__note-title-icon{
+    width: 20px;
+    height: 20px;
+    margin-right:12px;
+}
+
+.edit__note-title{
+    margin:0;
+    font-weight: 100;
+    font-size:16px;
+}
+
+.edit__note-input{
+    border:none;
+    outline:none;
+    padding :20px 24px;
+    border-radius: 5px;
+    background: #F6F6F6;
+    font-size:13px;
+    width:100%;
+    height: 300px;
+    margin-bottom:16px;
+    box-sizing: border-box;
+}
+
+.edit__submit-button{
+    border:none;
+    background: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    border : 1px solid  #E9E9E9;
+    box-sizing:border-box;
+    border-radius: 10px;
+    height: 36px;
+    cursor:pointer;
+}
+
+.edit__submit-button-icon{
+    width:20px;
+    height: 20px;
+    margin-right: 11px;
+}
+
+.edit__submit-text{
+    font-weight: 100;
+    font-size:14px;
+}
+
+.edit__note-nav-wrapper{
+    width: 800px;
+}
+
+.edit__note-nav{
+    display: flex;
+    background : none;
+    border:none;
+    outline: none;
+    align-items: center;
+    cursor:pointer;
+}
+
+.edit__note-nav-icon{
+    width: 8.22px;
+    height: 11.45px;
+    padding-right: 8px;
+}
+
+.edit__note-nav-text{
+    font-weight: 100;
+    font-size:12px;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8"/><!--문자들의 집합 중 utf-8사용-->
+       <title>노트앱|가입</title>
+       <link rel="icon" href="./assets/note.png"> 
+       <link rel="stylesheet" href="./register.css">
+    </head>
+    <body>
+        <!--컨텐츠 구획 태그-->
+        <header>
+            <div class="regist__header_content">
+                <h1 class="regist__header_title">노트앱</h1>
+            </div>
+        </header>
+        <main>
+            <div class="regist__login-wrapper">
+                <form method="POST" action="/register" id="register">
+                    <div class="regist__login-text">Register</div>
+                
+                    <div class="regist__login-email">
+                        <img class="regist__login-input-icon" src="assets/user.png" alt="유저이미지"/>
+                        <input type="email" name="email" class="regist__login-input-input" id="email" placeholder="emali"/>
+                    </div>
+                    <div class="regist__login-pw">
+                        <img class="regist__login-input-icon" src="assets/lock.png" alt="패스워드 이미지"/>
+                        <input type="password" name="password" class="regist__login-input-input" id="password"/>
+                    </div>
+                    <div class="regist__login-pw">
+                        <img class="regist__login-input-icon" src="assets/lock.png" alt="패스워드 이미지"/>
+                        <input type="password" class="regist__login-input-input" id="password-check" placeholder="password-check"/>
+                    </div>
+                </form>
+                <button class="regist__login-button" onClick="register()">Register</button>
+            </div>
+        </main>
+        <script src='./register.js'></script>
+    </body>
+</html>
