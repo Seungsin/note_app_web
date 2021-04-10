@@ -33,6 +33,14 @@
                 <div class="main__note-title-wrapper">
                     <img class="main__note-title-icon" src="assets/note.png" alt="내 메모 아이콘"/>
                     <h2 class="main__note-title">내 메모</h2>
+                    <form type="GET" id="main__folder" action="/">
+                        <select name="main__folder_select" id="main__folder_select" onchange="folderChange()">
+                            <option value="memos" id="memos" >폴더 선택(main)</option>
+                            <% options.map((optional)=>{ %>
+                                <option value="<%= optional.value%>" id="<%= optional.value%>" <%=optional.selected%>><%= optional.value%></option>
+                            <% }); %>
+                        </select>
+                    </form>
                 </div>
                 <div class="main__note-contents">
                     <% memos.map((memo) => { %>

@@ -86,6 +86,11 @@ function getMemos(){
 
 }
 
+function folderChange(){
+    const form = document.getElementById('main__folder');
+    form.submit();
+}
+
 
 
 // getMemos();

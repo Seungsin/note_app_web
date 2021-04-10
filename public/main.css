@@ -102,6 +102,17 @@ main{
     font-size:14px;
 }
 
+#main__folder_select{
+    margin-left: 10px;
+    border-radius: 5px;
+    height: 20px;
+    width: 150px;
+}
+
+.main__folder_select>option{
+    font-size: 14px;
+}
+
 .main__note-contents{
     display: grid;
     grid-template-columns: repeat(3, 1fr);

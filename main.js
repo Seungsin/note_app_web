@@ -6,7 +6,7 @@ const express = require('express');
 const session = require('express-session');
 const {Firestore} = require('@google-cloud/firestore');
 const {FirestoreStore} = require('@google-cloud/connect-firestore');
-
+let selectF = 'memos';
 //Express 사용
 const app = express();
 
@@ -49,8 +49,33 @@ app.get('/', async (request, response) => {
   }
 
   const {uid} = request.session.account;
+  selectF = request.query.main__folder_select;
+  if(!selectF){
+    selectF='memos';
+  }
+  console.log(selectF);
 
-  const memo_list = await db.doc(uid).collection('memos').orderBy('date', 'desc').get();
+  const option_list = await db.doc(uid).listCollections();
+  // console.log(option_list);
+  const options = [];
+
+  option_list.forEach((option)=>{
+    let option_data={};
+    option_data.value = option.id;
+    // console.log(option_data.value);
+    if(option.id === selectF){
+      option_data.selected = "selected='selected";
+    }
+    else{
+      option_data.selected = "";
+    }
+    /**
+     * {content:'memo1', id='~~~~}
+     */
+    options.push(option_data);
+  });
+  
+  const memo_list = await db.doc(uid).collection(selectF).orderBy('date', 'desc').get();
 
   const memos = [];
 
@@ -63,7 +88,7 @@ app.get('/', async (request, response) => {
     memos.push(memo_data);
   });
 
-  response.render('main.html', {memos});
+  response.render('main.html', {memos, options});
 });
 
 //작성요청을 위한 엔드포인트
@@ -73,12 +98,12 @@ app.post('/',async (req, res)=>{
     return;
   }
 
-const {uid} =req.session.account;
+const {uid} = req.session.account;
 
   const memo_data = req.body.content;
   let now = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
   // console.log("now : ", now);
-  await db.doc(uid).collection('memos').add({
+  await db.doc(uid).collection(selectF).add({
     content: memo_data,
     date: now,
   });
@@ -104,7 +129,7 @@ app.get('/edit', async (req, res)=>{
   
   const {uid} = req.session.account;
 
-  const doc = await db.doc(uid).collection('memos').doc(id).get();
+  const doc = await db.doc(uid).collection(selectF).doc(id).get();
 
   // 이 문서가 없을 경우
   if(!doc.exists){
