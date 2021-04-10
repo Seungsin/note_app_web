@@ -71,7 +71,8 @@ main{
     border-radius: 5px;
     background: #F6F6F6;
     font-size:13px;
-    width:100%;
+    resize:none;
+    width:750px;
     height: 150px;
     margin-bottom:16px;
     box-sizing: border-box;

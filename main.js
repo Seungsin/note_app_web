@@ -50,7 +50,7 @@ app.get('/', async (request, response) => {
 
   const {uid} = request.session.account;
 
-  const memo_list = await db.doc(uid).collection('memos').get();
+  const memo_list = await db.doc(uid).collection('memos').orderBy('date', 'desc').get();
 
   const memos = [];
 
@@ -76,10 +76,11 @@ app.post('/',async (req, res)=>{
 const {uid} =req.session.account;
 
   const memo_data = req.body.content;
-  // let now = new Date("2020-10-23-12-30-00");
+  let now = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
   // console.log("now : ", now);
   await db.doc(uid).collection('memos').add({
     content: memo_data,
+    date: now,
   });
 
   res.redirect('/');
