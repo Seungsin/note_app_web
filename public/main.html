@@ -39,6 +39,9 @@
                             <% options.map((optional)=>{ %>
                                 <option value="<%= optional.value%>" id="<%= optional.value%>" <%=optional.selected%>><%= optional.value%></option>
                             <% }); %>
+                            <option value="add_folder" id="add_folder">
+                                폴더 추가하기
+                            </option>
                         </select>
                     </form>
                 </div>

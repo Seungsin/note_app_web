@@ -49,11 +49,19 @@ app.get('/', async (request, response) => {
   }
 
   const {uid} = request.session.account;
-  selectF = request.query.main__folder_select;
-  if(!selectF){
-    selectF='memos';
+  const selectWhat = request.query.main__folder_select;
+  if (!selectWhat){
+    if(selectF==='memos'){
+      selectF='memos';
+    }
+  } else if(selectWhat.slice(0, 3)==='new'){
+    selectF = selectWhat.slice(3);
+    await db.doc(uid).collection(selectF).add({});
+  } else if(selectWhat){
+    selectF=selectWhat;
   }
-  console.log(selectF);
+  // console.log(selectWhat.slice(0, 3));
+  // console.log(selectF);
 
   const option_list = await db.doc(uid).listCollections();
   // console.log(option_list);
@@ -69,9 +77,6 @@ app.get('/', async (request, response) => {
     else{
       option_data.selected = "";
     }
-    /**
-     * {content:'memo1', id='~~~~}
-     */
     options.push(option_data);
   });
   
@@ -92,7 +97,7 @@ app.get('/', async (request, response) => {
 });
 
 //작성요청을 위한 엔드포인트
-app.post('/',async (req, res)=>{
+app.post('/', async (req, res)=>{
   if(!req.session.account){
     res.redirect('/login');
     return;
@@ -156,7 +161,7 @@ app.post('/edit',async (req, res)=>{
 
   const {uid} = req.session.account;
 
-  await db.doc(uid).collection('memos').doc(id).update({
+  await db.doc(uid).collection(selectF).doc(id).update({
     content : content,//content만 써도 알아서 들어가긴함
   });
 
@@ -174,7 +179,7 @@ app.post('/delete', async(req, res)=>{
 
   const {uid} = req.session.account;
 
-  await db.doc(uid).collection('memos').doc(id).delete();
+  await db.doc(uid).collection(selectF).doc(id).delete();
 
   res.redirect('/');
 });

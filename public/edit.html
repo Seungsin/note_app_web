@@ -12,16 +12,18 @@
             <div class="edit__header_content">
                 <h1 class="edit__header_title">노트앱</h1>
                 <form method="POST" action="/logout" id="logout"></form>
-                <button class="edit__header_button">로그아웃</button>
+                <button class="edit__header_button" onclick="logout()">로그아웃</button>
             </div>
         </header>
         <main>
-            <div class="edit__note-nav-wrapper">
-                <button class="edit__note-nav">
-                    <img class="edit__note-nav-icon" src="assets/left_arrow.png" alt="뒤로가기 아이콘"/>
-                    <h2 class="edit__note-nav-text">뒤로가기</h2>
-                </button>
-            </div>
+            <form method="GET" action="/">
+                <div class="edit__note-nav-wrapper">
+                    <button class="edit__note-nav">
+                        <img class="edit__note-nav-icon" src="assets/left_arrow.png" alt="뒤로가기 아이콘"/>
+                        <h2 class="edit__note-nav-text">뒤로가기</h2>
+                    </button>
+                </div>
+            </form>
             <section class="edit__note-section">
                 <div class="edit__note-title-wrapper">
                     <div class="edit__note-title-left">

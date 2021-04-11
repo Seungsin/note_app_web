@@ -21,6 +21,10 @@ header{
     color:rgb(226, 128, 128);
 }
 
+.login__header_join:hover{
+    color:rgb(0, 255, 136);
+}
+
 .login__header_title{
     margin: 0;
     font-size: 16px;

@@ -87,10 +87,22 @@ function getMemos(){
 }
 
 function folderChange(){
+    const selecting = document.getElementById('main__folder_select');
+    if(selecting.value === 'add_folder'){
+        let foldName = prompt('새로운 폴더명을 입력하세요.');
+        if(selecting.options.namedItem(foldName)){
+            alert('이미 존재하는 폴더입니다.');
+            return;
+        }
+        if(!confirm(`[${foldName}] 폴더를 생성할까요?`)){
+            alert('취소되었습니다.');
+            return;
+        }
+        document.getElementById('add_folder').value = 'new' + foldName;
+        alert('생성되었습니다.');
+    }
+    // alert(`${document.getElementById('main__folder_select').value}`);
     const form = document.getElementById('main__folder');
     form.submit();
 }
-
-
-
 // getMemos();
